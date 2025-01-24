@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT SOS - Solving Assignments Made Easy</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?education,learning') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Navbar styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav .dropdown {
+            position: relative;
+        }
+        nav .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        nav .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        nav .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        nav .dropdown-menu a:hover {
+            background: #4caf50;
+        }
+
+        /* Main content */
+        main {
+            padding: 120px 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .upload-section {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 400px;
+            width: 100%;
+        }
+        .upload-section input[type="file"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            background: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .upload-section button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #4caf50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .upload-section button:hover {
+            background: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with dropdown menus -->
+    <header>
+        <div class="logo">PROJECT SOS</div>
+        <nav>
+            <a href="#">Home</a>
+            <div class="dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="#">Assignment Solutions</a>
+                    <a href="#">Project Guidance</a>
+                    <a href="#">Q&A Support</a>
+                </div>
+            </div>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <h1>Welcome to PROJECT SOS</h1>
+        <p>Snap your assignment, upload it, and let us do the rest!</p>
+        <div class="upload-section">
+            <form id="upload-form" enctype="multipart/form-data">
+                <label for="file-input">Upload Your Assignment</label>
+                <input type="file" id="file-input" accept="image/*" required>
+                <button type="submit">Get Solution</button>
+            </form>
+        </div>
+        <div id="output" style="margin-top: 20px;"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 PROJECT SOS. All rights reserved.
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const uploadForm = document.getElementById('upload-form');
+        const output = document.getElementById('output');
+
+        uploadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please upload a file!');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            output.innerHTML = '<p>Processing...</p>';
+
+            // Simulate server response (for testing purposes)
+            setTimeout(() => {
+                output.innerHTML = '<p><strong>Solution:</strong> The uploaded file has been processed. Your solution will appear here shortly.</p>';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
